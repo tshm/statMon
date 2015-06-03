@@ -8,12 +8,12 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsService1
+namespace StatusMonitor
 {
-    public partial class Service1 : ServiceBase
+    public partial class StatusMonitorService : ServiceBase
     {
         Program p;
-        public Service1()
+        public StatusMonitorService()
         {
             InitializeComponent();
             this.CanStop = true;

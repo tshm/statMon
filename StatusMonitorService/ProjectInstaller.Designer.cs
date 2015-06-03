@@ -1,4 +1,4 @@
-﻿namespace WindowsService1
+﻿namespace StatusMonitor
 {
     partial class ProjectInstaller
     {

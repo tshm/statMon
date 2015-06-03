@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
 
-namespace WindowsService1
+namespace StatusMonitor
 {
     class Alarm
     {
@@ -54,7 +54,7 @@ namespace WindowsService1
                 ServiceBase[] ServicesToRun;
                 ServicesToRun = new ServiceBase[] 
                 { 
-                    new Service1() 
+                    new StatusMonitorService() 
                 };
                 ServiceBase.Run(ServicesToRun);
             }
@@ -72,9 +72,10 @@ namespace WindowsService1
         public void Start()
         {
             var player = new Alarm();
+            //player.Play();
             LogManager.GetCurrentClassLogger().Info("starting to monitor.");
 
-            var timedObserver = Observable.Interval(TimeSpan.FromSeconds(5));
+            var timedObserver = Observable.Interval(TimeSpan.FromSeconds(50));
             var netObserver = StatusObserverFactory.GetNetworkStatusObserver();
             var powObserver = StatusObserverFactory.GetPowerStatusObserver();
 

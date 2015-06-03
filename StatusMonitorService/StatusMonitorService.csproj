@@ -7,7 +7,7 @@
     <ProjectGuid>{8235AEEC-454F-4D1B-AE07-AD5328E2D74F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsService1</RootNamespace>
+    <RootNamespace>StatusMonitor</RootNamespace>
     <AssemblyName>PowerAndNetworkMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

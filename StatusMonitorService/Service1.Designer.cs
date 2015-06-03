@@ -1,6 +1,6 @@
-﻿namespace WindowsService1
+﻿namespace StatusMonitor
 {
-    partial class Service1
+    partial class StatusMonitorService
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

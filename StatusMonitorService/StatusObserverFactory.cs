@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using System.Reactive.Linq;
 using System.Windows.Forms;
 
-namespace WindowsService1
+namespace StatusMonitor
 {
     static class StatusObserverFactory
     {
@@ -20,6 +20,8 @@ namespace WindowsService1
             )
             .StartWith(true);
             obs.Subscribe(e => LogManager.GetCurrentClassLogger().Trace("power : {0}", e));
+
+            LogManager.GetCurrentClassLogger().Trace("Subscribe to power event");
             return obs;
         }
 
@@ -33,6 +35,7 @@ namespace WindowsService1
             .StartWith(true);
             obs.Subscribe(e => LogManager.GetCurrentClassLogger().Trace("network : {0}", e));
 
+            LogManager.GetCurrentClassLogger().Trace("Subscribe to network event");
             return obs;
         }
     }
