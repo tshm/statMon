@@ -7,9 +7,9 @@ using System.ServiceProcess;
 
 namespace StatusMonitor
 {
-    class Alarm
+    internal class Alarm
     {
-        System.Media.SoundPlayer player;
+        private System.Media.SoundPlayer player;
 
         public Alarm()
         {
@@ -27,10 +27,10 @@ namespace StatusMonitor
         }
     }
 
-    class Program
+    internal class Program
     {
         [DllImport("user32.dll", SetLastError = true)]
-        static extern bool LockWorkStation();
+        private static extern bool LockWorkStation();
 
         private static void SetMaxVolume()
         {
@@ -47,14 +47,14 @@ namespace StatusMonitor
         /// <summary>
         /// Main Entry point
         /// </summary>
-        static void Main()
+        private static void Main()
         {
             if (!Environment.UserInteractive)
             {
                 ServiceBase[] ServicesToRun;
-                ServicesToRun = new ServiceBase[] 
-                { 
-                    new StatusMonitorService() 
+                ServicesToRun = new ServiceBase[]
+                {
+                    new StatusMonitorService()
                 };
                 ServiceBase.Run(ServicesToRun);
             }
@@ -80,7 +80,7 @@ namespace StatusMonitor
             var powObserver = StatusObserverFactory.GetPowerStatusObserver();
 
             timedObserver.CombineLatest(powObserver, netObserver, (i, pow, net) => !(pow || net))
-            //.DistinctUntilChanged()
+                //.DistinctUntilChanged()
             .Subscribe(s => React(player, s),
                 err => LogManager.GetCurrentClassLogger().Error("Error: {0}", err));
         }
@@ -97,7 +97,5 @@ namespace StatusMonitor
         {
             LogManager.GetCurrentClassLogger().Info("terminating monitor.");
         }
-
     }
-
 }

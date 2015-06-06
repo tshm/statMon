@@ -7,9 +7,10 @@ using System.Windows.Forms;
 
 namespace StatusMonitor
 {
-    static class StatusObserverFactory
+    internal static class StatusObserverFactory
     {
-        static public IObservable<bool> GetPowerStatusObserver() {
+        static public IObservable<bool> GetPowerStatusObserver()
+        {
             var obs = Observable.FromEvent<PowerModeChangedEventHandler, PowerModeChangedEventArgs>(
                 evc => (sender, evt) => evc(evt),
                 h => SystemEvents.PowerModeChanged += h,
@@ -25,7 +26,8 @@ namespace StatusMonitor
             return obs;
         }
 
-        static public IObservable<bool> GetNetworkStatusObserver() {
+        static public IObservable<bool> GetNetworkStatusObserver()
+        {
             var obs = Observable.FromEvent<NetworkAvailabilityChangedEventHandler, NetworkAvailabilityEventArgs>(
                 evc => (sender, evt) => evc(evt),
                 h => NetworkChange.NetworkAvailabilityChanged += h,
